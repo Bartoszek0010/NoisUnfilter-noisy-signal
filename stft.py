@@ -35,7 +35,7 @@ plt.show()
 
 # In[195]:
 
-
+# create signals (noise)
 f1, f2, f3 = 1000, 4000, 10000
 amps = [10, 15, 22]
 ls13 = np.linspace(0,int(len(data)/4), len(data)/4)
@@ -74,7 +74,7 @@ plt.show()
 
 # In[201]:
 
-
+# function to plot a filter characteristics
 def mfreqz(b,a=1):
     w,h = signal.freqz(b,a)
     h_dB = 20 * log10 (abs(h))
@@ -89,7 +89,7 @@ def mfreqz(b,a=1):
 # In[220]:
 
 
-
+# creating filters
 n = 501
 filter1 = signal.firwin(n, cutoff = [800, 1200], window = 'hamming', pass_zero = True, fs = fs)
 filter2 = signal.firwin(n, cutoff = [3800, 4200], window = 'hamming', pass_zero = True, fs = fs)
@@ -105,7 +105,7 @@ plt.ylabel("Frequency")
 plt.xlabel("Time")
 plt.show()
 
-
+# normalizing filtered signal to 0 - 1.0
 normalized_filtered = filtered_x / max(np.abs(filtered_x))
 
 
@@ -123,7 +123,7 @@ show()
 
 # In[203]:
 
-
+# create and plot relative error between signal with his filtered version
 n = len(data)
 k = np.arange(n)
 T = n/fs
